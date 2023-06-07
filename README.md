@@ -1,32 +1,40 @@
 # BOT 3match
 ## Быстрый старт
-### Клонируем репозитарий
+### Docker pull
 ```
-git clone https://github.com/iigordyachenko/3_match_bot_resnet36.git
-cd 3_match_bot_resnet36
+sudo docker pull igorhseone196263/default-service-fastpai:latest
 ```
-### Docker build
+### Docker container run
 ```
-docker build -t default-service-fastpai:latest . 
+sudo docker container run --publish 80:80  -it igorhseone196263/default-service-fastpai:latest
 ```
-### Docker run
 Здесь инициализируется REST API
-```
-docker container run --publish 80:80 --name demo-app-container default-service-fastpai:latest  
-```
-К какому хосту и порту обращаться 
+
+Linux/macos
 ```
 http://0.0.0.0:80/
 ```
+Windows 
+```
+http://localhost:80/
+```
 ### Отправка json для инференса модели осуществляется через метод predict
+Linux/macos
 ```
 http://0.0.0.0:80/predict
+```
+Windows 
+```
+http://localhost:80/predict
 ```
 На выходе будет строка с номерами граней ходов
 ```
 '[103, 102, 2, ..., 1]'
 ```
 Грани отсортированы по вероятности. Выбираем первый элемент в массиве, если этот ход оказывается невалидным, то берем следующий элемент.
+
+
+
 ### Как выглядит инференс на python
 3_match_bot_resnet36/json_predict/predict.py
 
