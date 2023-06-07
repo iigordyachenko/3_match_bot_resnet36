@@ -15,5 +15,5 @@ if __name__ == '__main__':
     url = 'http://0.0.0.0:80/predict'
     x = requests.post(url, json=data)
     res = ast.literal_eval(x.text)
-    print(type(res))
+    print(res)
 
