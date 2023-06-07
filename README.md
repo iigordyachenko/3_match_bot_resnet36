@@ -58,6 +58,4 @@ if __name__ == '__main__':
     x = requests.post(url, json=data)
     #Преобразование строки в list
     res = ast.literal_eval(x.text)
-    print(type(res))
-
 ```
